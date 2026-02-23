@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from . import analytics_api
 
 urlpatterns = [
     # Authentication APIs
@@ -25,4 +26,12 @@ urlpatterns = [
     path("prediction/<str:transaction_id>/report", views.prediction_report_api, name="prediction_report_api"),
     path("profile-stats", views.profile_stats_api, name="profile_stats_api"),
     path("seed-dummy", views.seed_dummy_data_api, name="seed_dummy_data_api"),
+    
+    # Advanced Analytics APIs
+    path("analytics/insights", analytics_api.transaction_insights_api, name="transaction_insights_api"),
+    path("analytics/spending", analytics_api.spending_analysis_api, name="spending_analysis_api"),
+    path("analytics/anomalies", analytics_api.anomalies_api, name="anomalies_api"),
+    path("analytics/forecast", analytics_api.cash_flow_forecast_api, name="cash_flow_forecast_api"),
+    path("analytics/overdraft-risk", analytics_api.overdraft_risk_api, name="overdraft_risk_api"),
+    path("analytics/categorize", analytics_api.categorize_transactions_api, name="categorize_transactions_api"),
 ]
